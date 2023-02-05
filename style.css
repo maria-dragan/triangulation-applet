@@ -1,0 +1,95 @@
+* {
+	font-family:helvetica;
+}
+
+html, body {
+	margin:0px;
+    padding:0px;
+	overflow:hidden;
+}
+
+ul {
+	padding-left:20px;
+}
+
+.invisible {
+	visibility:hidden;
+	pointer-events:none;
+	height:0px !important;
+	padding-top:0px !important;
+	padding-bottom:0px !important;
+}
+
+#canvas {
+	top:0px;
+	left:0px;
+	position:absolute;
+	box-shadow:inset 0px 0px 10px rgba(0, 0, 0, 0.7);
+	background-image: url("map.jpg");
+	background-repeat: repeat;
+}
+
+#controls {
+	position:absolute;
+	display:inline-block;
+	background-color:#9ED6FF;
+	border:2px outset;
+	top:10px;
+	left:10px;
+	box-shadow:3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+#controlsHeader {
+	cursor:move;
+	background-color:#888;
+	padding:4px;
+}
+#controlsBody {
+	padding:8px;
+}
+
+#controlsLabel {
+	display:inline-block;
+	margin:0px;
+	font-weight:bold;
+	vertical-align:middle;
+}
+#showHideControls {
+	vertical-align:middle;
+	float:right;
+	background-color:#00F;
+	border-radius:5px;
+	display:inline-block;
+	margin:0px;
+	padding:2px 4px 2px 4px;
+	color:white;
+	cursor:pointer;
+	font-size:14px;
+}
+
+input[type=button] {
+	margin:4px;
+}
+
+
+/*
+#canvasContainer {
+    width: auto;
+    height: auto;
+    margin: 50px;
+    outline: solid 1px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hereswhatcheesewrote {
+    width: auto;
+    height: auto;
+    margin: 100px;
+    padding: 20px;
+    outline: solid 5px palevioletred;
+    background-color: antiquewhite;
+    display: flex;
+
+}
+*/
