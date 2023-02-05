@@ -1,0 +1,681 @@
+<html data-lt-installed="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Earthquakes</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="37f615d6-f42e-4642-b08d-4c1b73327aed" class="page sans"><header><img class="page-cover-image" src="Earthquakes_files/photo-1617585411149-54e9fdf60348.jpg" style="object-position:center 60.480000000000004%"><h1 class="page-title">Earthquakes</h1></header><div class="page-body"><nav id="97e0ebca-2a2d-4e13-aa82-a095c74b6c77" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#869e2d21-6752-439d-8be0-b6d547d78210">What are earthquakes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7e6efee8-a382-4e83-9530-d5491fa64442">Why do tectonic plates move?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d2d4a28e-e0ac-458f-80f4-34ea585f389d">Where do earthquakes occur?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c21d6cf7-2dbe-4356-892e-282decbb456c">How do earthquakes affect people?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#565cdba4-3f7e-4e14-8bdf-473ed67fedd0">Earthquake Protection</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e520ea3f-3885-45e6-8c96-be3dfab5b654">Seismometers</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6f4bd588-940f-44c7-a56b-961b39e7cd5a">What are P-waves and S-waves?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#87999242-7eaf-44b7-a69c-77edf6f57dda">Earthquake triangulation</a></div></nav><p id="27cdc7d4-4c05-49d1-8931-bab265954dc3" class="">
+</p><div id="cdce3d86-74fd-4d39-8129-7d0137265f44" class="column-list"><div id="774be0e8-8b89-416c-b044-6c4536202ca9" style="width:50%" class="column"><h1 id="869e2d21-6752-439d-8be0-b6d547d78210" class="">What are earthquakes</h1><p id="6a431817-1ae6-4529-bd10-00e09028ae16" class="">The tectonic plates are always moving, on the edges where the tectonic plates meet, there is a lot of stress and friction. When the stress overcomes the friction, the tectonic plates slip and release a lot of energy. That energy propagates in the form of seismic waves. Those seismic waves then cause tsunamis and landslides.</p><p id="c6ffb6f3-cd93-4689-b277-3cf9ae4bed1b" class="">Earthquakes are difficult to predict, however monitoring seismic activity over time helps identify patterns in to then predict future earthquakes. Real-time predictions from seismographs are more reliable, however they come at an extremely short notice.</p><p id="651fc177-5985-4ea4-aaa2-9b3b174a7516" class="">
+</p></div><div id="a8f6d62e-180f-4a06-b1ea-c0661ee7a335" style="width:50%" class="column"><figure id="ff761b3a-0a38-497f-9470-7ed273a06968" class="image"><a href="file:///C:/Users/moai/Downloads/Export-b57e1a60-11df-4a2f-8a49-d9d3b7d4d284/Earthquakes%2037f615d6f42e4642b08d4c1b73327aed/Untitled.png"><img style="width:2770px" src="Earthquakes_files/Untitled.png"></a><figcaption><a href="https://www.usgs.gov/media/images/global-seismographic-network-gsn-stations">https://www.usgs.gov/media/images/global-seismographic-network-gsn-stations</a></figcaption></figure></div></div><p id="ba165700-3d0e-415a-98ea-25fdb1186a51" class="">
+</p><div id="f5364c1f-f033-4995-988c-605a951a506a" class="column-list"><div id="c5d88b9b-2b74-4572-b33b-cf4f08b7237a" style="width:50%" class="column"><figure id="9b831c93-a3e0-4836-9e95-a496e53e1ad0" class="image"><a href="file:///C:/Users/moai/Downloads/Export-b57e1a60-11df-4a2f-8a49-d9d3b7d4d284/Earthquakes%2037f615d6f42e4642b08d4c1b73327aed/Untitled%201.png"><img style="width:528px" src="Earthquakes_files/Untitled%201.png"></a><figcaption><a href="https://en.wikipedia.org/wiki/File:Plates_tect2_en.svg">https://en.wikipedia.org/wiki/File:Plates_tect2_en.svg</a></figcaption></figure></div><div id="69a0f2dc-97f4-4597-8411-8fb3fb421698" style="width:50%" class="column"><h1 id="7e6efee8-a382-4e83-9530-d5491fa64442" class="">Why do tectonic plates move?</h1><p id="6d7504dc-bb5e-4e52-8fbc-ab6352b1274b" class="">Tectonic plates are parts of the Earth’s crust that are in constant motion, which respond to initial forces of the planet. The main forces moving the plates are Convection forces in the mantle - that cause plates to move away from each other as well as, the movement magma beneath the Earth’s crust - causing plates to move towards each other. External forces can also influence tectonic plate movement, such as Earth’s rotation and oceanic currents and gravitational pull of the Moon and Sun. When plates move they can cause earthquakes and volcanic eruptions and other geographical phenomenoms.</p></div></div><p id="0022256d-657f-4708-8370-8280ca84bc90" class="">
+</p><div id="2e6a533a-d7c8-41bc-a6d5-8d9cdf9da824" class="column-list"><div id="a4a8b57b-33fc-4251-9232-c3600e2d5776" style="width:62.5%" class="column"><h1 id="d2d4a28e-e0ac-458f-80f4-34ea585f389d" class="">Where do earthquakes occur?</h1><p id="97e8977d-a4cb-4085-909f-497987f4e902" class="">Earthquakes are most common in areas near the borders of tectonic plates, the majority of active regions with earthquakes are found along the “Ring of Fire” found along the Pacific Rim. 90% of all world earthquakes occur there due to the movement of plates. The “Ring of Fire” is a home to many active volcanos and it is a very important geological location.  It includes coasts of Japan, Southern East of Asia as well as the West coast of North and South America. Other places with high seismic activity are Mediterranean regions and Middle East.</p><p id="507a390b-a855-4c54-9aa7-4c580c7cf294" class="">
+</p></div><div id="0b03e5ea-0a02-4b13-9dd2-f6ba10524b1c" style="width:37.5%" class="column"><figure id="2bfd9c23-6ae9-4fa9-98db-942f15f3efc5" class="image"><a href="file:///C:/Users/moai/Downloads/Export-b57e1a60-11df-4a2f-8a49-d9d3b7d4d284/Earthquakes%2037f615d6f42e4642b08d4c1b73327aed/Untitled%202.png"><img style="width:480px" src="Earthquakes_files/Untitled%202.png"></a><figcaption><a href="https://en.wikipedia.org/wiki/Ring_of_Fire#/media/File:Pacific_Ring_of_Fire.svg">https://en.wikipedia.org/wiki/Ring_of_Fire#/media/File:Pacific_Ring_of_Fire.svg</a></figcaption></figure></div></div><div id="7b35d98e-4f1f-4a68-beae-a564dea99ac5" class="column-list"><div id="22573d45-538a-4bdf-8c8a-86fd4b0a409e" style="width:31.25%" class="column"><figure id="f9bd4af6-efda-4f99-8dc3-60716bd0bc62" class="image"><a href="file:///C:/Users/moai/Downloads/Export-b57e1a60-11df-4a2f-8a49-d9d3b7d4d284/Earthquakes%2037f615d6f42e4642b08d4c1b73327aed/Untitled.jpeg"><img style="width:403px" src="Earthquakes_files/Untitled.jpeg"></a><figcaption><a href="https://en.wikipedia.org/wiki/File:HotelSanSalvador.jpg">https://en.wikipedia.org/wiki/File:HotelSanSalvador.jpg</a></figcaption></figure></div><div id="759d1e2c-abb8-4118-b557-4ed51e7f67bd" style="width:68.75%" class="column"><h1 id="c21d6cf7-2dbe-4356-892e-282decbb456c" class="">How do earthquakes affect people?</h1><p id="f46c96e2-dbfb-47c4-a361-3a02104a4f26" class="">Earthquakes can be a big problem for cities, besides destroyed buildings and infrastructure, they often cause economic issues and loss of lives. Moreover, earthquakes can trigger other disasters such as floods, tsunamis, landslides and even other earthquakes. Even small earthquakes can lead to significant damage to poor infrastructure. </p><h1 id="565cdba4-3f7e-4e14-8bdf-473ed67fedd0" class="">Earthquake Protection</h1><p id="5bc1efeb-7fe1-4c13-8898-d86b5fe9d390" class="">The best protection against earthquakes is for the city to construct buildings with foundation that can endure seismic activity and reinforcing roofs and walls. As well as, maintaining and regularly inspecting the building for any faults. Additionally, it is very important to ensure people with safety protocols and proper education (safety routes and emergency services), in the case of an earthquake. Another protection measure is to get down, hide and hold onto something, and ensuring safety to yourself and others around you. It is also good, to keep a safety supply kit, in case of emergency and keeping away from from potential hazards, such as windows and unsupported furniture. </p></div></div><p id="aab51dc1-b0a4-4b2f-bfa9-a4d7eeb395c7" class="">
+</p><p id="07f4576b-9db9-47db-bd0a-4047879360f3" class="">
+</p><div id="49aa77b6-1e8d-44d6-b7ef-f01d163f8446" class="column-list"><div id="d6d21a38-d7dc-4e0a-af32-c73474d0511e" style="width:81.25%" class="column"><h1 id="e520ea3f-3885-45e6-8c96-be3dfab5b654" class="">Seismometers</h1><p id="6b39c77d-8b0e-46f1-8915-fba408ff8b71" class="">Seismographs are the tools used to monitor ground activity. Their records are called seismograms, on which the amplitude and frequency of the ground motion are plotted over time. Reading a seismogram can provide valuable information on an earthquake, such as its magnitude and the distance to the epicenter.</p><p id="c24c7bdd-a9ab-4d69-b49e-ab8248b8d4e1" class="">Seismograms can be used to predict ground activity, allowing people to prepare before an earthquake occurs.</p><p id="f560a415-5c4f-4e75-a967-d3f658f2fed1" class="">The instrument consists of a weight suspended on a spring and a casing that is strongly connected to the ground. During seismic activity, the frame moves, while the spring with the weight stays in place (moving in the opposite direction in relation to the frame). This produces an electrical signal, or is recorded on a scroll of paper with a stylus attached to the weight.</p><p id="341d9343-5a73-45a9-8956-fbe8d9bcb8e9" class="">The data is then graphed in time, with amplitude on the vertical axis. Even during times with no earthquake, the reading can show some activity, which is actually just background noise.</p><p id="5451dd1a-966a-499c-a6c8-911938abc791" class="">
+</p></div><div id="2836875b-dc97-48c3-a172-ec607cdfabfb" style="width:18.750000000000007%" class="column"><figure id="0b00e54a-6f27-4c1b-9687-f34ed47dfd0b" class="image"><a href="file:///C:/Users/moai/Downloads/Export-b57e1a60-11df-4a2f-8a49-d9d3b7d4d284/Earthquakes%2037f615d6f42e4642b08d4c1b73327aed/Untitled%201.jpeg"><img style="width:672px" src="Earthquakes_files/Untitled%201.jpeg"></a><figcaption><a href="https://en.wikipedia.org/wiki/File:Seismographs.jpg">https://en.wikipedia.org/wiki/File:Seismographs.jpg</a></figcaption></figure><figure id="72eca707-b7db-4017-8115-fc11638630b3" class="image" style="text-align:center"><a href="file:///C:/Users/moai/Downloads/Export-b57e1a60-11df-4a2f-8a49-d9d3b7d4d284/Earthquakes%2037f615d6f42e4642b08d4c1b73327aed/Untitled%202.jpeg"><img style="width:240px" src="Earthquakes_files/Untitled%202.jpeg"></a><figcaption><a href="https://en.wikipedia.org/wiki/File:Kinemetrics_seismograph.jpg">https://en.wikipedia.org/wiki/File:Kinemetrics_seismograph.jpg</a></figcaption></figure></div></div><p id="72266f85-7b29-45db-bc7f-e900072a6f87" class="">
+</p><p id="99385d7b-72de-4cd2-b71c-b13c9ed0c814" class="">
+</p><div id="f550a2ea-e97b-474f-95c3-314a90d18648" class="column-list"><div id="ee3fbce7-64ae-4cc9-97ae-79862fab659a" style="width:50%" class="column"><figure id="4fa7e9d0-4517-42e4-82a3-322e47892cfa" class="image"><a href="file:///C:/Users/moai/Downloads/Export-b57e1a60-11df-4a2f-8a49-d9d3b7d4d284/Earthquakes%2037f615d6f42e4642b08d4c1b73327aed/Untitled%203.jpeg"><img style="width:432px" src="Earthquakes_files/Untitled%203.jpeg"></a><figcaption><a href="https://catholicscienceteacher6.blogspot.com/2014/04/what-is-seismograph.html">https://catholicscienceteacher6.blogspot.com/2014/04/what-is-seismograph.html</a></figcaption></figure></div><div id="5737c1f8-c273-4ed6-a733-f497ec6831cd" style="width:50.000000000000014%" class="column"><h1 id="6f4bd588-940f-44c7-a56b-961b39e7cd5a" class="">What are P-waves and S-waves?</h1><p id="7a85ef12-1edf-421c-92c0-8196d320139e" class="">Seismic waves that radiate from the epicenter of an earthquake come in two types: P-waves and S-waves. The two types shake the ground in different ways, and move at different speeds.</p><p id="88928e57-1e8a-4737-b176-5843695a53e5" class="">P-waves, also known as Primary waves, are faster than S-waves, propagating at 7 km/s. They compress and expand the material they travel through, and can travel through both solid and liquid materials.</p><p id="528fa700-8729-4fa0-a7e2-042e59214cde" class="">S-waves, also known as Shear or Secondary waves, travel at 4 km/s. They move shaking the ground perpendicularly to the direction of travel, and can only move through solid materials.</p><p id="cd216b28-a3b8-41ab-9ec6-a9db9a5673ed" class="">Generally, S-waves cause more damage than P-waves.</p></div></div><div id="f6ba970b-ea88-42ab-9001-6656ef00ace3" class="column-list"><div id="bbb4c41a-5115-4843-bab2-282dbd7804d6" style="width:50%" class="column"><h1 id="87999242-7eaf-44b7-a69c-77edf6f57dda" class="">Earthquake triangulation</h1><p id="cfbdc1d1-3aba-4ede-a5f9-28688ca592ad" class="">The difference in speed of the two types of seismic waves can be used to find the distance to the earthquake epicenter from the seismograph. However, the distance information from one seismogram isn't very useful, as it only provides a perimeter instead of a specific area. To fix that, the readings from two other seismographs in different locations can be used, as just one extra would eliminate the possible locations to two options, and a third one would narrow it down to just one possible epicenter location.</p><p id="086de238-5e7a-4de0-bed6-efb2b28fa66a" class="">The combined data also helps to get a better estimate on the magnitude of the earthquake.</p><p id="be5e5f1d-a3d3-42c3-93da-00752d64bfa1" class="">It is very important to have stations monitoring 24/7 as that can help predict any seismic activity and send out warnings in time.</p><p id="64b51a10-1564-4074-9b28-ceb26d52ec3f" class="">
+</p><p id="f440415d-d259-45c0-bbe6-723a9cc727b6" class="">
+</p></div><div id="2438e686-66fa-46fb-bbcc-9ae64bec48fb" style="width:50%" class="column"><figure id="50a0dbb8-a195-4130-9138-4b710c999429" class="image"><a href="file:///C:/Users/moai/Downloads/Export-b57e1a60-11df-4a2f-8a49-d9d3b7d4d284/Earthquakes%2037f615d6f42e4642b08d4c1b73327aed/Untitled.gif"><img style="width:528px" src="Earthquakes_files/Untitled.gif"></a><figcaption><a href="https://www.usgs.gov/media/images/triangulation-locate-earthquake">https://www.usgs.gov/media/images/triangulation-locate-earthquake</a></figcaption></figure></div></div></div></article></body></html>
