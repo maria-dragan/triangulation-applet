@@ -31,8 +31,11 @@ const ringWidth = 3;
 window.addEventListener("resize", resizeCanvas);
 
 function resizeCanvas() {
-    canvas.width = window.innerWidth;
+	canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+	if(window.innerWidth <= window.innerHeight) {
+		alert("It is advised to view this applet in landscape orientation")
+	}
 	if(canvas.width > canvas.height*2) {
 		canvas.style.backgroundSize = canvas.height*2 + "px " + canvas.height*2 + "px";
 	}
