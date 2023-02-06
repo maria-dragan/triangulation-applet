@@ -9,7 +9,7 @@ html, body {
 }
 
 ul {
-	padding-left:20px;
+	padding-left:10px;
 }
 
 .invisible {
@@ -29,19 +29,20 @@ ul {
 	background-repeat: repeat;
 }
 
-#controls {
+#controlsdiv { 
 	position:absolute;
 	display:inline-block;
-	background-color:#9ED6FF;
-	border:2px outset;
-	top:10px;
+	background-color:#eee;
+	/* border:2px outset; */
+	/* top:10px; */
 	left:10px;
-	box-shadow:3px 3px 10px rgba(0, 0, 0, 0.2);
+	/* box-shadow:3px 3px 10px rgba(0, 0, 0, 0.2); */
+	border-radius: 10px;
 }
 #controlsHeader {
 	cursor:move;
-	background-color:#888;
-	padding:4px;
+	/* background-color:#ccc; */
+	padding:6px;
 }
 #controlsBody {
 	padding:8px;
@@ -56,21 +57,30 @@ ul {
 #showHideControls {
 	vertical-align:middle;
 	float:right;
-	background-color:#00F;
-	border-radius:5px;
+}
+
+/* input[type=button] {
+	margin:4px;
+} */
+
+.ButtonControls {
+	color: "#fff";
 	display:inline-block;
-	margin:0px;
-	padding:2px 4px 2px 4px;
-	color:white;
 	cursor:pointer;
 	font-size:14px;
+	border-radius:5px;
+	margin:0px;
+	padding:2px 4px 2px 4px;
+	background-color:#99f;
+	/* color:"#fff"; */
+	/* word-wrap: normal; */
 }
 
-input[type=button] {
-	margin:4px;
+.brSmall {
+	display: block;
+	margin: 3px 0;
+
 }
-
-
 /*
 #canvasContainer {
     width: auto;

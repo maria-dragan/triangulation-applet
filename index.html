@@ -9,10 +9,10 @@
   </head>
   <body>
 	<canvas width="0" height="0" id="canvas"></canvas>
-    <div id="controls">
+    <div id="controlsdiv">
 		<div id="controlsHeader">
 			<p id="controlsLabel">Controls:</p>
-			<p id="showHideControls" onclick="toggleControls()">Hide</p>
+			<p class="ButtonControls" id="showHideControls" onclick="toggleControls()">Hide</p>
 		</div>
 		<div id="controlsBody">
 			<table>
@@ -25,16 +25,16 @@
 					<td><input type="checkbox" checked id="showRings" onchange="redraw()"></td>
 				</tr>
 			</table>
-			<input type="button" value="Randomize earthquake position" id="randomQuake" onclick="randomQuake()">
+			<p class="ButtonControls" id="randomQuake" onclick="randomQuake()">Randomize earthquake position</p>
+			<br class="brSmall">
+			<p class="ButtonControls" id="removeStations" onclick="removeStations()">Remove all stations</p>
 			<br>
-			<input type="button" value="Remove all stations" id="removeStations" onclick="removeStations()">
-			<hr>
 			<ul>
 				<li>Left-click to add a station</li>
 				<li>Right-click to remove a station</li>
 				<li>Left-click and drag to move<br>a station or earthquake location</li>
 			</ul>
-			<hr>
+			<!-- <br> -->
 				<a href="Earthquakes.html">Learn about earthquakes</a>
 		</div>
 	</div>

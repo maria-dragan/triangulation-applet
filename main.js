@@ -4,7 +4,7 @@ const ctx = canvas.getContext("2d");
 const elems = {
 	"showRings": document.getElementById("showRings"),
 	"showQuake": document.getElementById("showQuake"),
-	"controls": document.getElementById("controls"),
+	"controls": document.getElementById("controlsdiv"),
 	"controlsHeader": document.getElementById("controlsHeader"),
 	"showHideControls": document.getElementById("showHideControls"),
 	"controlsBody": document.getElementById("controlsBody")
